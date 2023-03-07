@@ -1,19 +1,21 @@
+let dis = document.getElementById("result");
+let upper = document.getElementById("subtext");
+
 function display(val) {
-    const dis = document.getElementById("result");
     dis.value += val;
 }
 
 function answer() {
-    const dis = document.getElementById("result");
     try {
-        let x = dis.value;
+        upper.value = dis.value + '=';
+        dis.value = '';
+        let x = upper.value.slice(0,-1);
         let y = eval(x);
         dis.value = y;
     } catch {
         dis.value = 'Error';
     }
 
-    // const dis = document.getElementById("result");
     //     let total = 0;
     //     dis = dis.match(/[+\−]*(\.\d+|\d+(\.\d+)?)/g) || [];
     //     while (dis.length) {
@@ -22,48 +24,61 @@ function answer() {
     //     return total;
 }
 
+// var count = 0;
 function dlt() {
-    const dis = document.getElementById("result");
+    if(dis.value == '') {
+        upper.value = '';
+    }
     dis.value = '';
+    // if(count==0) {
+    //     if(dis.value != '') {
+    //         count++;
+    //     }
+    //     dis.value = '';
+    // } else if(count==1) {
+    //     upper.value = '';
+    //     count = 0;
+    // }   
 }
 
 function sqr() {
-    const dis = document.getElementById("result");
+    upper.value = 'sqr('+ dis.value + ')';
     dis.value = Math.pow(dis.value, 2);
 }
 
+
+// INSIDE TRIGONOMETRY
 function sin() {
-    const dis = document.getElementById("result");
+    upper.value = 'sin('+ dis.value + ')';
     dis.value = Math.sin(dis.value);
 }
 
 function cos() {
-    const dis = document.getElementById("result");
+    upper.value = 'cos('+ dis.value + ')';
     dis.value = Math.cos(dis.value);
 }
 
 function tan() {
-    const dis = document.getElementById("result");
+    upper.value = 'tan('+ dis.value + ')';
     dis.value = Math.tan(dis.value);
 }
 
 function sec() {
-    const dis = document.getElementById("result");
+    upper.value = 'sec('+ dis.value + ')';
     dis.value = 1 / Math.cos(dis.value);
 }
 
 function cosec() {
-    const dis = document.getElementById("result");
+    upper.value = 'cosec('+ dis.value + ')';
     dis.value = 1 / Math.sin(dis.value);
 }
 
 function cot() {
-    const dis = document.getElementById("result");
+    upper.value = 'cot('+ dis.value + ')';
     dis.value = 1 / Math.tan(dis.value);
 }
 
 function pop() {
-    const dis = document.getElementById("result");
     if(dis.value=='Error' || dis.value=='Infinity' || dis.value=='NaN') {
         dis.value = '';
     } else {
@@ -71,53 +86,72 @@ function pop() {
     }
 }
 
+
+// INSIDE FUNCTION
 function absolute() {
-    const dis = document.getElementById("result");
+    upper.value = 'abs('+ dis.value + ')';
     dis.value = Math.abs(dis.value);
 }
 
 function ceil() {
-    const dis = document.getElementById("result");
+    upper.value = 'ceil('+ dis.value + ')';
     dis.value = Math.ceil(dis.value);
 }
 
 function floor() {
-    const dis = document.getElementById("result");
+    upper.value = 'floor('+ dis.value + ')';
     dis.value = Math.floor(dis.value);
 }
 
+function rand() {
+    dis.value = Math.random(dis.value);
+}
+
+function dms() {
+    let degree = Math.round(dis.value);
+    console.log(degree);
+    let minutes = (dis.value - degree)*60;
+    console.log(minutes);
+    let seconds = (minutes - Math.round(minutes))*60;
+    console.log(seconds);
+    dis.value = degree+'.'+minutes+seconds;
+}
+
+function deg() {
+
+}
+
+
 function log() {
-    const dis = document.getElementById("result");
+    upper.value = 'log('+ dis.value + ')';
     dis.value = Math.log10(dis.value);
 }
 
 function ln() {
-    const dis = document.getElementById("result");
+    upper.value = 'ln('+ dis.value + ')';
     dis.value = Math.log(dis.value);
 }
 
 function expo() {
-    const dis = document.getElementById("result");
     dis.value = Math.exp(dis.value);
 }
 
 function inverse() {
-    const dis = document.getElementById("result");
+    upper.value = '1/('+ dis.value + ')';
     dis.value = 1 / dis.value;   
 }
 
 function sqroot() {
-    const dis = document.getElementById("result");
+    upper.value = '√('+ dis.value + ')';
     dis.value = Math.sqrt(dis.value);
 }
 
 function tentox() {
-    const dis = document.getElementById("result");
+    upper.value = '10^('+ dis.value + ')';
     dis.value = Math.pow(10, dis.value);
 }
 
 function plusminus() {
-    const dis = document.getElementById("result");
     if(dis.value>0)
         dis.value = 0-dis.value;
     else
@@ -125,7 +159,7 @@ function plusminus() {
 }
 
 function factorial() {
-    const dis = document.getElementById("result");
+    upper.value = 'fact('+ dis.value + ')';
     let fact = 1;
     if(dis.value == 0 || dis.value == 1) {
         fact = 1;
@@ -137,11 +171,129 @@ function factorial() {
     dis.value = fact;
 }
 
-document.getElementsById("second second1").addEventListener("click", function(e) {
+document.getElementById("second").addEventListener("click", function(e) {
+    e.stopPropagation();
+});
+document.getElementById("second1").addEventListener("click", function(e) {
     e.stopPropagation();
 });
 
-function colorChange() {
-    document.getElementById('second').style.backgroundColor = 'rgb(0,90,158)';
-    document.getElementById('second').style.color = 'white';
+
+// 2nd INSIDE TRIGONOMETRY
+function sini() {
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.asin(dis.value);
+    else
+        dis.value = "Please enter value between -1 and 1";
+}
+
+function cosi() {
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.acos(dis.value);
+    else
+        dis.value = "Please enter value between -1 and 1";
+}
+
+function tani() {
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.atan(dis.value);
+    else
+        dis.value = "Please enter value between -1 and 1";
+}
+
+function seci() {
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = 1 / Math.acos(dis.value);
+    else
+        dis.value = "Please enter value between -1 and 1";
+}
+
+// function coseci() {
+//     if(dis.value>=-1 && dis.value<=1)
+//         dis.value = 1 / Math.asin(dis.value);
+//     else
+//         dis.value = "Please enter value between -1 and 1";
+// }
+
+// function coti() {
+//     if(dis.value>=-1 && dis.value<=1)
+//         dis.value = 1 / Math.atan(dis.value);
+//     else
+//         dis.value = "Please enter value between -1 and 1";
+// }
+
+
+// hyp INSIDE TRIGOMOMETRY
+function sinh() {
+    upper.value = 'sinh('+ dis.value + ')';
+    dis.value = Math.sinh(dis.value);
+}
+
+function cosh() {
+    upper.value = 'cosh('+ dis.value + ')';
+    dis.value = Math.cosh(dis.value);
+}
+
+function tanh() {
+    upper.value = 'tanh('+ dis.value + ')';
+    dis.value = Math.tanh(dis.value);
+}
+
+function sech() {
+    upper.value = 'sech('+ dis.value + ')';
+    dis.value = 1 / Math.cosh(dis.value);
+}
+
+function cosech() {
+    upper.value = 'cosech('+ dis.value + ')';
+    dis.value = 1 / Math.sinh(dis.value);
+}
+
+function coth() {
+    upper.value = 'coth('+ dis.value + ')';
+    dis.value = 1 / Math.tanh(dis.value);
+}
+
+
+// INSIDE 2nd
+function cube() {
+    upper.value = 'cube('+ dis.value + ')';
+    dis.value = Math.pow(dis.value, 3);
+}
+
+function cubert() {
+    upper.value = 'cuberoot('+ dis.value + ')';
+    dis.value = Math.pow(dis.value, 1/3);
+}
+
+function yrootx() {
+}
+
+function twotox() {
+    upper.value = '2^('+ dis.value + ')';
+    dis.value = Math.pow(2, dis.value);
+}
+
+function logyx() {
+}
+
+function etox() {
+    upper.value = 'e^(' + dis.value + ')';
+    dis.value = Math.pow(Math.E, dis.value);
+}
+
+function textChange() {
+    let btntxt = document.getElementById("btntxt").innerHTML;
+
+    if(btntxt == 'DEG') {
+        document.getElementById("btntxt").innerHTML = 'RAD';
+    } else if(btntxt == 'RAD') {
+        document.getElementById("btntxt").innerHTML = 'GRAD';
+    } else {
+        document.getElementById("btntxt").innerHTML = 'DEG';
+    }
+}
+
+function fe() {
+    dis.value = dis.value/10 + 'e+1';
 }
