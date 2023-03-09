@@ -13,23 +13,29 @@
         <div style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center;">
         <div class="main">
             <div class="screen">
-                <textarea rows="2" cols="60" id="subtext" style="resize: none; background-color: #FAF9F6; text-align: right; border: none;" disabled></textarea>
+                <textarea rows="2" cols="60" id="subtext" style="max-width: 463px; max-height: 100px; resize: none; background-color: #FAF9F6; text-align: right; border: none;" disabled></textarea>
                 <textarea rows="4" cols="60" id="result" style="max-width: 463px; max-height: 100px; resize: none; background-color: #FAF9F6; text-align: right; border: none; font-size: 30px; color: black;" placeholder="0" disabled></textarea>
                 <hr>
             </div>
 
             <div class="mode">
-                <button type="button" class="btn btn-light" id="btntxt" onclick="textChange()">DEG</button> <!-- GRAD, DEG -->
-                <button type="button" class="btn btn-light" onclick="fe()">F-E</button> <!-- underline, ce button change -->
+                <button type="button" class="btn btn-light" id="btntxt" onclick="textChange()">DEG</button>
+                <input type="checkbox" class="btn-check" id="btn-check" autocomplete="off" onclick="fe()">
+                <label class="btn btn-light" for="btn-check">F-E</label>
             </div>
 
             <div class="options">
-                <button type="button" class="btn btn-light btn0" disabled>MC</button> <!-- DISABLE -->
-                <button type="button" class="btn btn-light btn0" disabled>MR</button> <!-- DISABLE -->
-                <button type="button" class="btn btn-light btn0">M+</button>
-                <button type="button" class="btn btn-light btn0">M-</button>
-                <button type="button" class="btn btn-light btn0">MS</button>
-                <button type="button" class="btn btn-light dropdown-toggle btn0" data-bs-toggle="dropdown" disabled>M</button> <!-- DISABLE, DROPDOWN -->
+                <button type="button" class="btn btn-light btn0" id="mc" onclick="mc()" disabled>MC</button>
+                <button type="button" class="btn btn-light btn0" id="mr" onclick="mr()" disabled>MR</button>
+                <button type="button" class="btn btn-light btn0" onclick="mplus()">M+</button>
+                <button type="button" class="btn btn-light btn0" onclick="mminus()">M-</button>
+                <button type="button" class="btn btn-light btn0" onclick="ms()">MS</button>
+                <button class="btn btn-light btn0" type="button" id="m" onclick="m()" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" disabled>M <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+                    <div class="offcanvas-header"></div>
+                    <div class="offcanvas-body small" id="memory"></div>
+                </div>
                 <hr>
             </div>
 
