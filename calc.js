@@ -2,6 +2,7 @@
 let dis = document.getElementById("result");
 let upper = document.getElementById("subtext");
 let marr = [];
+let op = ['+', '-', '*', '/', '%'];
 // **********************************************************************************************
 
 
@@ -11,8 +12,15 @@ function display(val) {
     // if(parseInt(val)>=0 && parseInt(val)<=9 && (upper.charAt(upper.value.length-1)=='=')) {
     //     dis.value = val;
     // } else {
-        dis.value += val;
+                                // dis.value += val;
     // }
+    let oldop = dis.value.slice(-1);
+    if(op.includes(val) && op.includes(oldop)) {
+            dis.value = dis.value.slice(0, -1);
+            dis.value += val;
+    } else {
+        dis.value += val;
+    }
 }
 // **********************************************************************************************
 
@@ -425,4 +433,6 @@ function answer() {
         dis.value = y;
     }
 }
+
+
 // **********************************************************************************************
