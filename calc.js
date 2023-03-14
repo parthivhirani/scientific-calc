@@ -2,18 +2,13 @@
 let dis = document.getElementById("result");
 let upper = document.getElementById("subtext");
 let marr = [];
-let op = ['+', '-', '*', '/', '%'];
+let op = ['+', '-', '*', '/', '%', '.'];
 // **********************************************************************************************
 
 
 
 // ****************************************** DISPLAY INTO SCREEN **********************************
 function display(val) {
-    // if(parseInt(val)>=0 && parseInt(val)<=9 && (upper.charAt(upper.value.length-1)=='=')) {
-    //     dis.value = val;
-    // } else {
-                                // dis.value += val;
-    // }
     let oldop = dis.value.slice(-1);
     if(op.includes(val) && op.includes(oldop)) {
             dis.value = dis.value.slice(0, -1);
@@ -173,53 +168,44 @@ function cot() {
 
 
 // 2nd INSIDE TRIGONOMETRY
-// function sini() {
-//     let mode = document.getElementById("btntxt").innerHTML;
-//     upper.value = 'arcsin('+ dis.value + ')';
-//     if(dis.value>=-1 && dis.value<=1) {
-//         if(mode=='RAD')
-//             dis.value = Math.asin(dis.value);
-//         else
-//             dis.value = Math.asin(dis.value*(Math.PI/180));       
-//     } else {
-//         dis.value = "Please enter value between -1 and 1";
-//     }
-// }
+function sini() {
+    upper.value = 'sin-1('+ dis.value + ')';
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.asin(dis.value);
+    else
+        dis.value = "Enter value between -1 and 1";
+}
 
-// function cosi() {
-//     if(dis.value>=-1 && dis.value<=1)
-//         dis.value = Math.acos(dis.value);
-//     else
-//         dis.value = "Please enter value between -1 and 1";
-// }
+function cosi() {
+    upper.value = 'cos-1('+ dis.value + ')';
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.acos(dis.value);
+    else
+        dis.value = "Enter value between -1 and 1";
+}
 
-// function tani() {
-//     if(dis.value>=-1 && dis.value<=1)
-//         dis.value = Math.atan(dis.value);
-//     else
-//         dis.value = "Please enter value between -1 and 1";
-// }
+function tani() {
+    upper.value = 'tan-1('+ dis.value + ')';
+    if(dis.value>=-1 && dis.value<=1)
+        dis.value = Math.atan(dis.value);
+    else
+        dis.value = "Enter value between -1 and 1";
+}
 
-// function seci() {
-//     if(dis.value>=-1 && dis.value<=1)
-//         dis.value = 1 / Math.acos(dis.value);
-//     else
-//         dis.value = "Please enter value between -1 and 1";
-// }
+function seci() {
+    upper.value = 'sec-1('+ dis.value + ')';
+    dis.value = Math.acos(1 / dis.value);
+}
 
-// function coseci() {
-//     if(dis.value>=-1 && dis.value<=1)
-//         dis.value = 1 / Math.asin(dis.value);
-//     else
-//         dis.value = "Please enter value between -1 and 1";
-// }
+function coseci() {
+    upper.value = 'cosec-1('+ dis.value + ')';
+    dis.value = Math.asin(1 / dis.value);
+}
 
-// function coti() {
-//     if(dis.value>=-1 && dis.value<=1)
-//         dis.value = 1 / Math.atan(dis.value);
-//     else
-//         dis.value = "Please enter value between -1 and 1";
-// }
+function coti() {
+    upper.value = 'cot-1('+ dis.value + ')';
+    dis.value = Math.atan(1 / dis.value);
+}
 
 
 // hyp INSIDE TRIGOMOMETRY
@@ -277,13 +263,11 @@ function rand() {
 }
 
 function dms() {
-    let degree = Math.round(dis.value);
-    console.log(degree);
-    let minutes = (dis.value - degree)*60;
-    console.log(minutes);
-    let seconds = (minutes - Math.round(minutes))*60;
-    console.log(seconds);
-    dis.value = degree+'.'+minutes+seconds;
+    upper.value = "dms("+ dis.value +")";
+    let degree = Math.floor(dis.value);
+    let minutes = ((dis.value - Math.floor(dis.value)) * 60.0);
+    let seconds = (minutes - Math.floor(minutes)) * 60.0;
+    dis.value = degree + "." + Math.floor(minutes) + seconds.toFixed(0);
 }
 
 function deg() {}
@@ -292,30 +276,25 @@ function deg() {}
 
 
 // ************************************ INSIDE 2nd **********************************************
-function cube() {
-    upper.value = 'cube('+ dis.value + ')';
-    dis.value = Math.pow(dis.value, 3);
-}
-
-function cubert() {
-    upper.value = 'cuberoot('+ dis.value + ')';
-    dis.value = Math.pow(dis.value, 1/3);
-}
-
-function yrootx() {
-    upper.value = '**('+ dis.value;
-}
-
-function twotox() {
-    upper.value = '2^('+ dis.value + ')';
-    dis.value = Math.pow(2, dis.value);
-}
-
-function logyx() {}
-
-function etox() {
-    upper.value = 'e^(' + dis.value + ')';
-    dis.value = Math.pow(Math.E, dis.value);
+let btnCount = 1;
+function changeBtn() {
+    if(btnCount%2==0) {
+        document.getElementById('sqr').innerHTML = 'x<sup>2</sup>';
+        document.getElementById('root').innerHTML = '2&#x221A;x';
+        document.getElementById('expo').innerHTML = 'x<sup>y</sup>';
+        document.getElementById('tenpow').innerHTML = '10<sup>x</sup>';
+        document.getElementById('log').innerHTML = 'log';
+        document.getElementById('ln').innerHTML = 'ln';
+        btnCount++;
+    } else {
+        document.getElementById('sqr').innerHTML = 'x<sup>3</sup>';
+        document.getElementById('root').innerHTML = '3&#x221A;x';
+        document.getElementById('expo').innerHTML = 'y&#x221A;x';
+        document.getElementById('tenpow').innerHTML = '2<sup>x</sup>';
+        document.getElementById('log').innerHTML = 'log<sub>y</sub>x';
+        document.getElementById('ln').innerHTML = 'e<sup>x</sup>';
+        btnCount++;
+    }
 }
 // **********************************************************************************************
 
@@ -342,8 +321,13 @@ function pop() {
 
 // ****************************************** ROW: 2 ********************************************
 function sqr() {
-    upper.value = 'sqr('+ dis.value + ')';
-    dis.value = Math.pow(dis.value, 2);
+    if(document.getElementById('sqr').innerHTML == 'x<sup>3</sup>') {
+        upper.value = 'cube('+ dis.value + ')';
+        dis.value = Math.pow(dis.value, 3);
+    } else {
+        upper.value = 'sqr('+ dis.value + ')';
+        dis.value = Math.pow(dis.value, 2);   
+    }
 }
 
 function inverse() {
@@ -352,7 +336,13 @@ function inverse() {
 }
 
 function expo() {
-    dis.value = Math.exp(dis.value);
+    if(dis.value!='') {
+        const fE = parseFloat(dis.value);
+        dis.value = fE.toExponential();
+    } else {
+        const fE = 0;
+        dis.value = fE.toExponential();
+    }
 }
 // **********************************************************************************************
 
@@ -360,8 +350,13 @@ function expo() {
 
 // ****************************************** ROW: 3 ********************************************
 function sqroot() {
-    upper.value = '√('+ dis.value + ')';
-    dis.value = Math.sqrt(dis.value);
+    if(document.getElementById('root').innerHTML == '2√x') {
+        upper.value = '√('+ dis.value + ')';
+        dis.value = Math.sqrt(dis.value);
+    } else {
+        upper.value = 'cuberoot('+ dis.value + ')';
+        dis.value = Math.pow(dis.value, 1/3);
+    }
 }
 
 function factorial() {
@@ -381,14 +376,27 @@ function factorial() {
 
 
 // ****************************************** ROW: 4 ********************************************
+function xtoy() {
+    if(document.getElementById('expo').innerHTML == 'x<sup>y</sup>') {
+        dis.value += '**';
+    } else {
+        dis.value = dis.value + "**(1/";
+    }
+}
 // **********************************************************************************************
 
 
 
 // ****************************************** ROW: 5 ********************************************
 function tentox() {
-    upper.value = '10^('+ dis.value + ')';
-    dis.value = Math.pow(10, dis.value);
+    if(document.getElementById('tenpow').innerHTML == '10<sup>x</sup>') {
+        upper.value = '10^('+ dis.value + ')';
+        dis.value = Math.pow(10, dis.value);
+    } else {
+        upper.value = '2^('+ dis.value + ')';
+        dis.value = Math.pow(2, dis.value);
+    }
+
 }
 // **********************************************************************************************
 
@@ -405,8 +413,13 @@ function log() {
 
 // ****************************************** ROW: 7 ********************************************
 function ln() {
-    upper.value = 'ln('+ dis.value + ')';
-    dis.value = Math.log(dis.value);
+    if(document.getElementById('ln').innerHTML == 'ln') {
+        upper.value = 'ln('+ dis.value + ')';
+        dis.value = Math.log(dis.value);
+    } else {
+        upper.value = 'e^(' + dis.value + ')';
+        dis.value = Math.pow(Math.E, dis.value);
+    }
 }
 
 function plusminus() {
@@ -433,6 +446,4 @@ function answer() {
         dis.value = y;
     }
 }
-
-
 // **********************************************************************************************

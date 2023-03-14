@@ -111,15 +111,8 @@
                     <tr>
                         <td>
                             <div class="btn-group">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">2<sup>nd</sup></button>
-                                <table class="dropdown-menu text-center">
-                                  <tr><td><button class="btn dropdown-item" onclick="cube()">x<sup>3</sup></button></td></tr>
-                                  <tr><td><button class="btn dropdown-item" onclick="cubert()">3&#x221A;x</button></td></tr>
-                                  <tr><td><button class="btn dropdown-item" onclick="display('**(1/')">y&#x221A;x</button></td></tr>
-                                  <tr><td><button class="btn dropdown-item" onclick="twotox()">2<sup>x</sup></button></td></tr>
-                                  <tr><td><button class="btn dropdown-item" onclick="logyx()">log<sub>y</sub>x</button></td></tr>
-                                  <tr><td><button class="btn dropdown-item" onclick="etox()">e<sup>x</sup></button></td></tr>
-                                </table>
+                                <!-- <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">2<sup>nd</sup></button> -->
+                                <button type="button" class="btn btn-light" onclick="changeBtn()">2<sup>nd</sup></button>
                             </div>
                         </td>
                         <td><button type="button" class="btn btn-light" onclick="display(Math.PI)">&#x213C;</button></td>
@@ -129,7 +122,7 @@
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="sqr()">x<sup>2</sup></button></td>
+                        <td><button type="button" class="btn btn-light" id="sqr" onclick="sqr()">x<sup>2</sup></button></td>
                         <td><button type="button" class="btn btn-light" onclick="inverse()">1/x</button></td>
                         <td><button type="button" class="btn btn-light" onclick="absolute()">|x|</button></td>
                         <td><button type="button" class="btn btn-light" onclick="expo()">exp</button></td>
@@ -137,7 +130,7 @@
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="sqroot()">2&#x221A;x</button></td> 
+                        <td><button type="button" class="btn btn-light" id="root" onclick="sqroot()">2&#x221A;x</button></td> 
                         <td><button type="button" class="btn btn-light" onclick="display('(')">(</button></td>
                         <td><button type="button" class="btn btn-light" onclick="display(')')">)</button></td>
                         <td><button type="button" class="btn btn-light" onclick="factorial()">n!</button></td>
@@ -145,33 +138,33 @@
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="display('**')">x<sup>y</sup></button></td> 
-                        <td><button type="button" class="btn btn-light" onclick="display('7')">7</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('8')">8</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('9')">9</button></td>
+                        <td><button type="button" class="btn btn-light" id="expo" onclick="xtoy()">x<sup>y</sup></button></td> 
+                        <td><button type="button" class="btn btn-light" onclick="display('7')"><b>7</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('8')"><b>8</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('9')"><b>9</b></button></td>
                         <td><button type="button" class="btn btn-light" onclick="display('*')">X</button></td>
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="tentox()">10<sup>x</sup></button></td> 
-                        <td><button type="button" class="btn btn-light" onclick="display('4')">4</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('5')">5</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('6')">6</button></td>
+                        <td><button type="button" class="btn btn-light" id="tenpow" onclick="tentox()">10<sup>x</sup></button></td> 
+                        <td><button type="button" class="btn btn-light" onclick="display('4')"><b>4</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('5')"><b>5</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('6')"><b>6</b></button></td>
                         <td><button type="button" class="btn btn-light" onclick="display('-')">-</button></td>
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="log()">log</button></td> 
-                        <td><button type="button" class="btn btn-light" onclick="display('1')">1</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('2')">2</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('3')">3</button></td>
+                        <td><button type="button" class="btn btn-light" id="log" onclick="log()">log</button></td> 
+                        <td><button type="button" class="btn btn-light" onclick="display('1')"><b>1</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('2')"><b>2</b></button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('3')"><b>3</b></button></td>
                         <td><button type="button" class="btn btn-light" onclick="display('+')">+</button></td>
                     </tr>
 
                     <tr>
-                        <td><button type="button" class="btn btn-light" onclick="ln()">ln</button></td> 
+                        <td><button type="button" class="btn btn-light" id="ln" onclick="ln()">ln</button></td> 
                         <td><button type="button" class="btn btn-light" onclick="plusminus()">+/_</button></td>
-                        <td><button type="button" class="btn btn-light" onclick="display('0')">0</button></td>
+                        <td><button type="button" class="btn btn-light" onclick="display('0')"><b>0</b></button></td>
                         <td><button type="button" class="btn btn-light" onclick="display('.')">.</button></td>
                         <td><button type="button" class="btn btn-light" style=" color: white; background-color: rgb(0, 90, 158);"  onclick="answer()">=</button></td>
                     </tr>
